@@ -1,10 +1,10 @@
 import {Socket} from "phoenix"
 
-let socket = new Socket("/socket", {params: {token: window.userToken}})
+let socket = new Socket("/socket", { params: { token: window.userToken } });
 
 socket.connect();
 
-const createSocket = (topicId) => {
+const createSocket = topicId => {
   let channel = socket.channel(`comments:${topicId}`, {})
     channel
       .join()
@@ -40,9 +40,17 @@ function renderComment(event) {
 }
 
 function commentTemplate(comment) {
+  let email = 'Anonymous';
+  if (comment.user) {
+    email = comment.user.email;
+  }
+
   return `
     <li class="collection-item">
       ${comment.content}
+      <div class="secondary-content">
+        ${email}
+      </div>
     </li>
   `
 }

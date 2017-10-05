@@ -25,7 +25,7 @@ defmodule Discuss.Topics do
   def get_topic!(id) do
     Topic
     |> Repo.get!(id)
-    |> Repo.preload(:comments)
+    |> Repo.preload(comments: [:user])
   end
 
   def update_topic(%Topic{} = topic, attrs) do

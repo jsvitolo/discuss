@@ -2,7 +2,7 @@ defmodule Discuss.Comments.Comment do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @derive {Poison.Encoder, only: [:content]}
+  @derive {Poison.Encoder, only: [:content, :user]}
 
   alias Discuss.Comments.Comment
   alias Discuss.Accounts.User

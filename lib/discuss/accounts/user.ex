@@ -6,6 +6,8 @@ defmodule Discuss.Accounts.User do
   alias Discuss.Topics.Topic
   alias Discuss.Comments.Comment
 
+  @derive {Poison.Encoder, only: [:email]}
+
   schema "users" do
     field :email
     field :provider
